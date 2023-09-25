@@ -1,20 +1,18 @@
-import React, { useEffect } from 'react';
-import io from 'socket.io-client';
-const WebHost = 'http://localhost:8080';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Home from './pages/Home';
+import Room from './pages/Room';
 
 function App() {
-
-  useEffect(()=> {
-    const socket = io(WebHost);
-  },[]);
-
-
   return (
     <>
-    
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/room/:id" element={<Room />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
