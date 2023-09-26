@@ -25,11 +25,7 @@ io.on('connection', (socket) => {
 
   roomHandler(socket)
 
-  //__DISCONNECT :
-  socket.on('disconnect', () =>{
-    console.log('user disconnected');
-  })
-
+  
 });
 
 server.listen(8080, () => {
