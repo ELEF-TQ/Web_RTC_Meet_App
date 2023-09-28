@@ -19,9 +19,10 @@ export const roomHandler = (socket: Socket) => {
   //__JOIN MEET :
   const joinMeeting = ({ roomId, peerId }: IRoomParams) => {
     if (rooms[roomId]) {
-      console.log('user joined', roomId, peerId);
+      console.log('user-joined', roomId, peerId);
       rooms[roomId].push(peerId);
       socket.join(roomId);
+      socket.to(roomId).emit('user-joined' , {peerId})
       socket.emit('get-users', {
         roomId,
         participants: rooms[roomId],
